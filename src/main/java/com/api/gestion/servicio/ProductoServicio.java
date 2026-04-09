@@ -11,6 +11,8 @@ public interface ProductoServicio {
     ResponseEntity<String> agregarNuevoProducto(Map<String, String> requestMap);
     ResponseEntity<List<ProductoWrapper>> obtenerTodosProductos();
     ResponseEntity<String> modificarProducto(@RequestBody Map<String, String> requestMap);
+    ResponseEntity<String> actualizarProductoCompleto(Integer id, Map<String, Object> requestMap);
+    ResponseEntity<String> actualizarProductoParcial(Integer id, Map<String, Object> updates);
     ResponseEntity<String> eliminarProducto(Integer id);
     ResponseEntity<String> modificarSatus(Map<String, String> requestMap);
     ResponseEntity<List<ProductoWrapper>> clasificarPorCategoria(Integer id);

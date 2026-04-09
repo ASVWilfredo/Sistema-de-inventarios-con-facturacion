@@ -1,7 +1,7 @@
 package com.api.gestion.rest;
 
 import com.api.gestion.constantes.FacturaConstantes;
-import com.api.gestion.pojo.Categoria;
+import com.api.gestion.pojo.Producto;
 import com.api.gestion.servicio.ProductoServicio;
 import com.api.gestion.util.FacturaUtils;
 import com.api.gestion.wrapper.ProductoWrapper;
@@ -44,6 +44,26 @@ public class ProductoControlador {
     public ResponseEntity<String> actualizarProducto(@RequestBody Map<String, String> requestMap) {
         try {
             return productoServicio.modificarProducto(requestMap);
+        } catch (Exception exception) {
+            exception.printStackTrace();
+        }
+        return FacturaUtils.getResponseEntity(FacturaConstantes.ALGO_SALIO_MAL, HttpStatus.INTERNAL_SERVER_ERROR);
+    }
+
+    @PutMapping("/modificarCompleto/{id}")
+    public ResponseEntity<String> actualizarProductoCompleto(@PathVariable Integer id, @RequestBody Map<String, Object> requestMap) {
+        try {
+            return productoServicio.actualizarProductoCompleto(id, requestMap);
+        } catch (Exception exception) {
+            exception.printStackTrace();
+        }
+        return FacturaUtils.getResponseEntity(FacturaConstantes.ALGO_SALIO_MAL, HttpStatus.INTERNAL_SERVER_ERROR);
+    }
+
+    @PatchMapping("/modificarParcial/{id}")
+    public ResponseEntity<String> actualizarProductoParcial(@PathVariable Integer id, @RequestBody Map<String, Object> updates) {
+        try {
+            return productoServicio.actualizarProductoParcial(id, updates);
         } catch (Exception exception) {
             exception.printStackTrace();
         }

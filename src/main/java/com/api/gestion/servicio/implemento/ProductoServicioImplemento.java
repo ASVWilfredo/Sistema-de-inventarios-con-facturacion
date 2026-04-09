@@ -83,6 +83,81 @@ public class ProductoServicioImplemento implements ProductoServicio {
     }
 
     @Override
+    public ResponseEntity<String> actualizarProductoCompleto(Integer id, Map<String, Object> requestMap) {
+        try {
+            if (!jwtFiltro.esAdmin()) {
+                return FacturaUtils.getResponseEntity(FacturaConstantes.ACCESO_NO_AUTORIZADO, HttpStatus.UNAUTHORIZED);
+            }
+            Optional<Producto> productoOptional = productoDAO.findById(id);
+            if (productoOptional.isEmpty()) {
+                return FacturaUtils.getResponseEntity("Producto no encontrado", HttpStatus.NOT_FOUND);
+            }
+            if (!requestMap.containsKey("nombre") || !requestMap.containsKey("descripcion") || !requestMap.containsKey("precio") || !requestMap.containsKey("categoriaId")) {
+                return FacturaUtils.getResponseEntity(FacturaConstantes.DATOS_INVALIDOS, HttpStatus.BAD_REQUEST);
+            }
+            Producto producto = productoOptional.get();
+            producto.setNombre((String) requestMap.get("nombre"));
+            producto.setDescripcion((String) requestMap.get("descripcion"));
+            producto.setPrecio(parseInteger(requestMap.get("precio")));
+            Categoria categoria = new Categoria();
+            categoria.setId(parseInteger(requestMap.get("categoriaId")));
+            producto.setCategoria(categoria);
+            // Mantener el status existente
+            productoDAO.save(producto);
+            return FacturaUtils.getResponseEntity("Producto actualizado completamente con éxito", HttpStatus.OK);
+        } catch (Exception exception) {
+            exception.printStackTrace();
+        }
+        return FacturaUtils.getResponseEntity(FacturaConstantes.ALGO_SALIO_MAL, HttpStatus.INTERNAL_SERVER_ERROR);
+    }
+
+    @Override
+    public ResponseEntity<String> actualizarProductoParcial(Integer id, Map<String, Object> updates) {
+        try {
+            if (!jwtFiltro.esAdmin()) {
+                return FacturaUtils.getResponseEntity(FacturaConstantes.ACCESO_NO_AUTORIZADO, HttpStatus.UNAUTHORIZED);
+            }
+            Optional<Producto> productoOptional = productoDAO.findById(id);
+            if (productoOptional.isEmpty()) {
+                return FacturaUtils.getResponseEntity("Producto no encontrado", HttpStatus.NOT_FOUND);
+            }
+            Producto producto = productoOptional.get();
+            if (updates.containsKey("nombre")) {
+                producto.setNombre((String) updates.get("nombre"));
+            }
+            if (updates.containsKey("descripcion")) {
+                producto.setDescripcion((String) updates.get("descripcion"));
+            }
+            if (updates.containsKey("precio")) {
+                producto.setPrecio(parseInteger(updates.get("precio")));
+            }
+            if (updates.containsKey("categoriaId")) {
+                Categoria categoria = new Categoria();
+                categoria.setId(parseInteger(updates.get("categoriaId")));
+                producto.setCategoria(categoria);
+            }
+            productoDAO.save(producto);
+            return FacturaUtils.getResponseEntity("Producto actualizado parcialmente con éxito", HttpStatus.OK);
+        } catch (Exception exception) {
+            exception.printStackTrace();
+        }
+        return FacturaUtils.getResponseEntity(FacturaConstantes.ALGO_SALIO_MAL, HttpStatus.INTERNAL_SERVER_ERROR);
+    }
+
+    private Integer parseInteger(Object value) {
+        if (value == null) {
+            return null;
+        }
+        if (value instanceof Integer) {
+            return (Integer) value;
+        }
+        if (value instanceof Number) {
+            return ((Number) value).intValue();
+        }
+        return Integer.parseInt(value.toString());
+    }
+
+    @Override
     public ResponseEntity<String> eliminarProducto(Integer id) {
         try {
             if (jwtFiltro.esAdmin()) {
