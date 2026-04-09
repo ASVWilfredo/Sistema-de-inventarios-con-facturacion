@@ -114,7 +114,7 @@ public class UsuarioServicioImplemento implements UsuarioServicio {
         } catch (Exception exception) {
             exception.printStackTrace();
         }
-        return FacturaUtils.getResponseEntity(FacturaConstantes.DATOS_INVALIDOS, HttpStatus.INTERNAL_SERVER_ERROR);
+        return FacturaUtils.getResponseEntity(FacturaConstantes.ALGO_SALIO_MAL, HttpStatus.INTERNAL_SERVER_ERROR);
     }
 
     private boolean validarRegistroMapa(Map<String, String> requestMap) {

@@ -1,0 +1,486 @@
+{
+  "info": {
+    "_postman_id": "5b1f1084-0648-4373-9a0b-3fe09b3a2993",
+    "name": "Proyecto5FacturasProductos",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "_exporter_id": "53286016",
+    "_collection_link": "https://go.postman.co/collection/53286016-5b1f1084-0648-4373-9a0b-3fe09b3a2993?source=collection_link"
+  },
+  "item": [
+    {
+      "name": "Usuarios",
+      "item": [
+        {
+          "name": "Guardar Usuario",
+          "request": {
+            "method": "POST",
+            "header": [],
+            "body": {
+              "mode": "raw",
+              "raw": "{\r\n    \"nombre\": \"Julio\",\r\n    \"numeroContacto\": \"6671514192\",\r\n    \"email\": \"j1@gmail.com\",\r\n    \"password\": \"123\"\r\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "http://localhost:8081/usuario/registrar",
+              "protocol": "http",
+              "host": [
+                "localhost"
+              ],
+              "port": "8081",
+              "path": [
+                "usuario",
+                "registrar"
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "Iniciar Seccion",
+          "request": {
+            "method": "POST",
+            "header": [],
+            "body": {
+              "mode": "raw",
+              "raw": "{\r\n    \"email\": \"w1@gmail.com\",\r\n    \"password\": \"123\"\r\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "http://localhost:8081/usuario/iniciarSeccion",
+              "protocol": "http",
+              "host": [
+                "localhost"
+              ],
+              "port": "8081",
+              "path": [
+                "usuario",
+                "iniciarSeccion"
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "Listar Usuarios",
+          "request": {
+            "auth": {
+              "type": "bearer",
+              "bearer": [
+                {
+                  "key": "token",
+                  "value": "eyJhbGciOiJIUzI1NiJ9.eyJyb2wiOiJ1c3VhcmlvIiwic3ViIjoianIxQGdtYWlsLmNvbSIsImlhdCI6MTc3NTY4Nzk4MSwiZXhwIjoxNzc1NjkxNTgxfQ.DSNXXR4Ty6xvHlHgpUymxBTSnHsEbCoaXsRxsSsz-G0",
+                  "type": "string"
+                }
+              ]
+            },
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "http://localhost:8081/usuario/obtener",
+              "protocol": "http",
+              "host": [
+                "localhost"
+              ],
+              "port": "8081",
+              "path": [
+                "usuario",
+                "obtener"
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "Modificar Status Usuario",
+          "request": {
+            "auth": {
+              "type": "bearer",
+              "bearer": [
+                {
+                  "key": "token",
+                  "value": "eyJhbGciOiJIUzI1NiJ9.eyJyb2wiOiJhZG1pbiIsInN1YiI6IncxQGdtYWlsLmNvbSIsImlhdCI6MTc3NTY4ODA1MiwiZXhwIjoxNzc1NjkxNjUyfQ.ewB4dNtWeokaIHpUoi9MZlRJF3d7foAR2HPO-4_HCKw",
+                  "type": "string"
+                }
+              ]
+            },
+            "method": "PUT",
+            "header": [],
+            "body": {
+              "mode": "raw",
+              "raw": "{\r\n    \"id\": \"2\",\r\n    \"status\": \"false\"\r\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "http://localhost:8081/usuario/modificar",
+              "protocol": "http",
+              "host": [
+                "localhost"
+              ],
+              "port": "8081",
+              "path": [
+                "usuario",
+                "modificar"
+              ]
+            }
+          },
+          "response": []
+        }
+      ]
+    },
+    {
+      "name": "Categorias",
+      "item": [
+        {
+          "name": "Agregar Categoria",
+          "request": {
+            "auth": {
+              "type": "bearer",
+              "bearer": [
+                {
+                  "key": "token",
+                  "value": "eyJhbGciOiJIUzI1NiJ9.eyJyb2wiOiJhZG1pbiIsInN1YiI6IncxQGdtYWlsLmNvbSIsImlhdCI6MTc3NTYwNTUyOCwiZXhwIjoxNzc1NjA5MTI4fQ.Z-e-oizKFOJJPNGH3FdJP1j9mNRkrpHUqzH43pnk9cs",
+                  "type": "string"
+                }
+              ]
+            },
+            "method": "POST",
+            "header": [],
+            "body": {
+              "mode": "raw",
+              "raw": "{\r\n    \"nombre\": \"Alimentos y Bebidas\"\r\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "http://localhost:8081/categoria/agregar",
+              "protocol": "http",
+              "host": [
+                "localhost"
+              ],
+              "port": "8081",
+              "path": [
+                "categoria",
+                "agregar"
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "Listar Categorias",
+          "request": {
+            "method": "GET",
+            "header": []
+          },
+          "response": []
+        },
+        {
+          "name": "Actualizar Categoria",
+          "request": {
+            "auth": {
+              "type": "bearer",
+              "bearer": [
+                {
+                  "key": "token",
+                  "value": "eyJhbGciOiJIUzI1NiJ9.eyJyb2wiOiJhZG1pbiIsInN1YiI6IncxQGdtYWlsLmNvbSIsImlhdCI6MTc3NTY3MTQxOSwiZXhwIjoxNzc1Njc1MDE5fQ.wsGNUCDxCcpXGs69qbLG5yA9OpgoyAxiRnoHX2ZLCE0",
+                  "type": "string"
+                }
+              ]
+            },
+            "method": "POST",
+            "header": [],
+            "body": {
+              "mode": "raw",
+              "raw": "{\r\n    \"id\":\"3\",\r\n    \"nombre\":\"Peliculas, Series de TV y Musica\"\r\n}\r\n",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "http://localhost:8081/categoria/actualizar",
+              "protocol": "http",
+              "host": [
+                "localhost"
+              ],
+              "port": "8081",
+              "path": [
+                "categoria",
+                "actualizar"
+              ]
+            }
+          },
+          "response": []
+        }
+      ]
+    },
+    {
+      "name": "Productos",
+      "item": [
+        {
+          "name": "Guardar Producto",
+          "request": {
+            "auth": {
+              "type": "bearer",
+              "bearer": [
+                {
+                  "key": "token",
+                  "value": "eyJhbGciOiJIUzI1NiJ9.eyJyb2wiOiJhZG1pbiIsInN1YiI6IncxQGdtYWlsLmNvbSIsImlhdCI6MTc3NTY4MjM1MiwiZXhwIjoxNzc1Njg1OTUyfQ.V59ZFvH8Tsglm6uksYu-Z6h_v0cqTEP5YfpEXUTGA4s",
+                  "type": "string"
+                }
+              ]
+            },
+            "method": "POST",
+            "header": [],
+            "body": {
+              "mode": "raw",
+              "raw": "{\r\n    \"categoriaId\": \"2\",\r\n    \"nombre\": \"Crema Hidratante \",\r\n    \"descripcion\": \"CeraVe Crema Hidratante Diaria para Rostro y Cuerpo, Piel Seca a Muy Seca\",\r\n    \"precio\": \"259\"\r\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "http://localhost:8081/producto/agregar",
+              "protocol": "http",
+              "host": [
+                "localhost"
+              ],
+              "port": "8081",
+              "path": [
+                "producto",
+                "agregar"
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "Listar Productos",
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          },
+          "request": {
+            "auth": {
+              "type": "bearer",
+              "bearer": [
+                {
+                  "key": "token",
+                  "value": "eyJhbGciOiJIUzI1NiJ9.eyJyb2wiOiJhZG1pbiIsInN1YiI6IncxQGdtYWlsLmNvbSIsImlhdCI6MTc3NTY4MjM1MiwiZXhwIjoxNzc1Njg1OTUyfQ.V59ZFvH8Tsglm6uksYu-Z6h_v0cqTEP5YfpEXUTGA4s",
+                  "type": "string"
+                }
+              ]
+            },
+            "method": "GET",
+            "header": [],
+            "body": {
+              "mode": "raw",
+              "raw": "{\r\n    \"categoriaId\": \"2\",\r\n    \"nombre\": \"Crema Hidratante \",\r\n    \"descripcion\": \"CeraVe Crema Hidratante Diaria para Rostro y Cuerpo, Piel Seca a Muy Seca\",\r\n    \"precio\": \"259\"\r\n}"
+            },
+            "url": {
+              "raw": "http://localhost:8081/producto/listar",
+              "protocol": "http",
+              "host": [
+                "localhost"
+              ],
+              "port": "8081",
+              "path": [
+                "producto",
+                "listar"
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "Modificar producto",
+          "request": {
+            "auth": {
+              "type": "bearer",
+              "bearer": [
+                {
+                  "key": "token",
+                  "value": "eyJhbGciOiJIUzI1NiJ9.eyJyb2wiOiJhZG1pbiIsInN1YiI6IncxQGdtYWlsLmNvbSIsImlhdCI6MTc3NTY5MTIwNywiZXhwIjoxNzc1Njk0ODA3fQ.9LnZh7DKM0cPzxLxZPBWATVXfWevH5OVKd24i8bCQqI",
+                  "type": "string"
+                }
+              ]
+            },
+            "method": "POST",
+            "header": [],
+            "body": {
+              "mode": "raw",
+              "raw": "{\r\n    \"categoriaId\": \"1\",\r\n    \"productoId\": \"4\",\r\n    \"nombre\": \"Satoru Alga Marina Nori Para Sushi\",\r\n    \"precio\": \"48\",\r\n    \"descripcion\": \"Nori (Alga deshidratada), 10 hojas de alga para preparar hasta 10 rollos de Sushi.\"\r\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "http://localhost:8081/producto/modificar",
+              "protocol": "http",
+              "host": [
+                "localhost"
+              ],
+              "port": "8081",
+              "path": [
+                "producto",
+                "modificar"
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "Eliminar Producto",
+          "request": {
+            "auth": {
+              "type": "bearer",
+              "bearer": [
+                {
+                  "key": "token",
+                  "value": "eyJhbGciOiJIUzI1NiJ9.eyJyb2wiOiJhZG1pbiIsInN1YiI6IncxQGdtYWlsLmNvbSIsImlhdCI6MTc3NTc1MDMxNCwiZXhwIjoxNzc1NzUzOTE0fQ.FOrpEXhg-_Jxh0vLMq9_zqBZYzxzUuJD55xSUeGMw6k",
+                  "type": "string"
+                }
+              ]
+            },
+            "method": "POST",
+            "header": [],
+            "url": {
+              "raw": "http://localhost:8081/producto/eliminar/5",
+              "protocol": "http",
+              "host": [
+                "localhost"
+              ],
+              "port": "8081",
+              "path": [
+                "producto",
+                "eliminar",
+                "5"
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "Modificar status",
+          "request": {
+            "auth": {
+              "type": "bearer",
+              "bearer": [
+                {
+                  "key": "token",
+                  "value": "eyJhbGciOiJIUzI1NiJ9.eyJyb2wiOiJhZG1pbiIsInN1YiI6IncxQGdtYWlsLmNvbSIsImlhdCI6MTc3NTc1MjkxMSwiZXhwIjoxNzc1NzU2NTExfQ.mB4NIFHFu9snnVwlemqNE6FTrpfk6uLrwsKZMcOb0x4",
+                  "type": "string"
+                }
+              ]
+            },
+            "method": "POST",
+            "header": [],
+            "body": {
+              "mode": "raw",
+              "raw": "{\r\n    \"productoId\": \"1\",\r\n    \"status\": \"false\"\r\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "http://localhost:8081/producto/modificarStatus",
+              "protocol": "http",
+              "host": [
+                "localhost"
+              ],
+              "port": "8081",
+              "path": [
+                "producto",
+                "modificarStatus"
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "ListarPorCategoria",
+          "request": {
+            "auth": {
+              "type": "bearer",
+              "bearer": [
+                {
+                  "key": "token",
+                  "value": "eyJhbGciOiJIUzI1NiJ9.eyJyb2wiOiJhZG1pbiIsInN1YiI6IncxQGdtYWlsLmNvbSIsImlhdCI6MTc3NTc1NTY3MCwiZXhwIjoxNzc1NzU5MjcwfQ.KIcscjfSfTTKFSyPuaCHKoKmV-bC6IJSMsRxUO4cZ2k",
+                  "type": "string"
+                }
+              ]
+            },
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "http://localhost:8081/producto/clasificarPorCategoria/1",
+              "protocol": "http",
+              "host": [
+                "localhost"
+              ],
+              "port": "8081",
+              "path": [
+                "producto",
+                "clasificarPorCategoria",
+                "1"
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "Obtener Producto por ID",
+          "request": {
+            "auth": {
+              "type": "bearer",
+              "bearer": [
+                {
+                  "key": "token",
+                  "value": "eyJhbGciOiJIUzI1NiJ9.eyJyb2wiOiJhZG1pbiIsInN1YiI6IncxQGdtYWlsLmNvbSIsImlhdCI6MTc3NTc1NjM4MywiZXhwIjoxNzc1NzU5OTgzfQ.D-dwJy7JhVT_QNSo3PsDO8JPUKsM9BcmGk7MvYEtOgw",
+                  "type": "string"
+                }
+              ]
+            },
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "http://localhost:8081/producto/buscarPorId/5",
+              "protocol": "http",
+              "host": [
+                "localhost"
+              ],
+              "port": "8081",
+              "path": [
+                "producto",
+                "buscarPorId",
+                "5"
+              ]
+            }
+          },
+          "response": []
+        }
+      ]
+    }
+  ]
+}
