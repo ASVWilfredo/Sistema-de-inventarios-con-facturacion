@@ -15,12 +15,12 @@ import java.util.List;
 import java.util.Map;
 
 @RestController
-@RequestMapping("/producto")
+@RequestMapping("/product")
 public class ProductoControlador {
     @Autowired
     private ProductoServicio productoServicio;
 
-    @PostMapping("/agregar")
+    @PostMapping("/add")
     public ResponseEntity<String> agregarNuevoProducto(@RequestBody Map<String,String> requestMap) {
         try {
             return productoServicio.agregarNuevoProducto(requestMap);
@@ -30,7 +30,7 @@ public class ProductoControlador {
         return FacturaUtils.getResponseEntity(FacturaConstantes.ALGO_SALIO_MAL, HttpStatus.INTERNAL_SERVER_ERROR);
     }
 
-    @GetMapping("/listar")
+    @GetMapping("/getAll")
     public ResponseEntity<List<ProductoWrapper>> listarProductos(){
         try {
             return productoServicio.obtenerTodosProductos();
@@ -40,7 +40,7 @@ public class ProductoControlador {
         return new ResponseEntity<>(new ArrayList(), HttpStatus.OK);
     }
 
-    @PostMapping("/modificar")
+    @PostMapping("/update")
     public ResponseEntity<String> actualizarProducto(@RequestBody Map<String, String> requestMap) {
         try {
             return productoServicio.modificarProducto(requestMap);
@@ -50,7 +50,7 @@ public class ProductoControlador {
         return FacturaUtils.getResponseEntity(FacturaConstantes.ALGO_SALIO_MAL, HttpStatus.INTERNAL_SERVER_ERROR);
     }
 
-    @PutMapping("/modificarCompleto/{id}")
+    @PutMapping("/fullUpdate/{id}")
     public ResponseEntity<String> actualizarProductoCompleto(@PathVariable Integer id, @RequestBody Map<String, Object> requestMap) {
         try {
             return productoServicio.actualizarProductoCompleto(id, requestMap);
@@ -60,7 +60,7 @@ public class ProductoControlador {
         return FacturaUtils.getResponseEntity(FacturaConstantes.ALGO_SALIO_MAL, HttpStatus.INTERNAL_SERVER_ERROR);
     }
 
-    @PatchMapping("/modificarParcial/{id}")
+    @PatchMapping("/partialUpdate/{id}")
     public ResponseEntity<String> actualizarProductoParcial(@PathVariable Integer id, @RequestBody Map<String, Object> updates) {
         try {
             return productoServicio.actualizarProductoParcial(id, updates);
@@ -70,7 +70,7 @@ public class ProductoControlador {
         return FacturaUtils.getResponseEntity(FacturaConstantes.ALGO_SALIO_MAL, HttpStatus.INTERNAL_SERVER_ERROR);
     }
 
-    @PostMapping("/eliminar/{id}")
+    @PostMapping("/delete/{id}")
     public ResponseEntity<String> eliminarProducto(@PathVariable Integer id) {
         try {
             return productoServicio.eliminarProducto(id);
@@ -80,7 +80,7 @@ public class ProductoControlador {
         return FacturaUtils.getResponseEntity(FacturaConstantes.ALGO_SALIO_MAL, HttpStatus.INTERNAL_SERVER_ERROR);
     }
 
-    @PostMapping("/modificarStatus")
+    @PostMapping("/changeStatus")
     public ResponseEntity<String> modificarStatusProducto(@RequestBody Map<String,String> requestMap) {
         try {
             return productoServicio.modificarSatus(requestMap);
@@ -90,7 +90,7 @@ public class ProductoControlador {
         return FacturaUtils.getResponseEntity(FacturaConstantes.ALGO_SALIO_MAL, HttpStatus.INTERNAL_SERVER_ERROR);
     }
 
-    @GetMapping("/clasificarPorCategoria/{id}")
+    @GetMapping("/orderByCategory/{id}")
     public ResponseEntity<List<ProductoWrapper>> listarProductosXCategoria(@PathVariable Integer id) {
         try {
             return productoServicio.clasificarPorCategoria(id);
@@ -100,7 +100,7 @@ public class ProductoControlador {
         return new ResponseEntity<>(new ArrayList(), HttpStatus.OK);
     }
 
-    @GetMapping("/buscarPorId/{id}")
+    @GetMapping("/getById/{id}")
     public ResponseEntity<ProductoWrapper> buscarProductoPorId(@PathVariable Integer id) {
         try {
             return productoServicio.obtenerProductoPorId(id);
