@@ -37,8 +37,8 @@ public class ConfigSeguridad {
                 .cors(cors -> cors.configurationSource(request ->
                         new CorsConfiguration().applyPermitDefaultValues()))
                 .csrf(csrf -> csrf.disable())
-                .authorizeHttpRequests(auth -> auth.requestMatchers("/usuario/iniciarSeccion",
-                                "/usuario/registrar", "/usuario/olvidePassword")
+                .authorizeHttpRequests(auth -> auth.requestMatchers("/user/login",
+                                "/user/signup", "/user/olvidePassword")
                         .permitAll()
                         .anyRequest().authenticated())
                 .sessionManagement(session -> session.sessionCreationPolicy(SessionCreationPolicy.STATELESS));

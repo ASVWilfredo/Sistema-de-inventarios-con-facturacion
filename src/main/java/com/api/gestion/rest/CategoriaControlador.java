@@ -14,12 +14,12 @@ import java.util.List;
 import java.util.Map;
 
 @RestController
-@RequestMapping("/categoria")
+@RequestMapping("/category")
 public class CategoriaControlador {
     @Autowired
     private CategoriaServicio categoriaServicio;
 
-    @PostMapping("/agregar")
+    @PostMapping("/add")
     public ResponseEntity<String> agregarNuevaCategoria(@RequestBody(required =true) Map<String,String> requestMap){
         try {
             return categoriaServicio.agregarNuevaCategoria(requestMap);
@@ -30,7 +30,7 @@ public class CategoriaControlador {
 
     }
 
-    @GetMapping("/obtener")
+    @GetMapping("/get")
     public ResponseEntity<List<Categoria>> listarCategorias(@RequestParam(required=false) String valorFiltro){
         try {
             return categoriaServicio.obtenerTodasCategorias(valorFiltro);
@@ -40,7 +40,7 @@ public class CategoriaControlador {
         return new ResponseEntity<>(new ArrayList<Categoria>(), HttpStatus.OK);
     }
 
-    @PostMapping("/actualizar")
+    @PostMapping("/update")
     public ResponseEntity<String> actualizarCategoria(@RequestBody(required = true) Map<String,String> requestMap){
         try {
             return categoriaServicio.actualizarCategoria(requestMap);

@@ -15,11 +15,11 @@ import java.util.List;
 import java.util.Map;
 
 @RestController
-@RequestMapping(path = "/usuario")
+@RequestMapping(path = "/user")
 public class UsuarioControlador {
     @Autowired
     private UsuarioServicio usuarioServicio;
-    @PostMapping("/registrar")
+    @PostMapping("/signup")
     public ResponseEntity<String> registrarUsuario(@RequestBody(required = true) Map<String, String> requestMap) {
         try {
             return usuarioServicio.registrarse(requestMap);
@@ -29,7 +29,7 @@ public class UsuarioControlador {
         return FacturaUtils.getResponseEntity(FacturaConstantes.ALGO_SALIO_MAL, HttpStatus.INTERNAL_SERVER_ERROR);
     }
 
-    @PostMapping("/iniciarSeccion")
+    @PostMapping("/login")
     public ResponseEntity<String> iniciarSeccion(@RequestBody(required = true) Map<String, String> requestMap) {
         try {
             return usuarioServicio.iniciarSeccion(requestMap);
@@ -39,7 +39,7 @@ public class UsuarioControlador {
         return FacturaUtils.getResponseEntity(FacturaConstantes.ALGO_SALIO_MAL, HttpStatus.INTERNAL_SERVER_ERROR);
     }
 
-    @GetMapping("/obtener")
+    @GetMapping("/get")
     public ResponseEntity<List<UsuarioWrapper>> listarUsuarios() {
         try {
             return usuarioServicio.getAllUsers();
@@ -49,7 +49,7 @@ public class UsuarioControlador {
         return new ResponseEntity<List<UsuarioWrapper>>(new ArrayList<>(), HttpStatus.INTERNAL_SERVER_ERROR);
     }
 
-    @PutMapping("/modificar")
+    @PutMapping("/update")
     public ResponseEntity<String> modificarUsuario(@RequestBody(required = true) Map<String, String> requestMap) {
         try {
             return usuarioServicio.modifcarStatus(requestMap);
